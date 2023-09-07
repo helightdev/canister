@@ -93,6 +93,9 @@ class LocalCache<K, V> implements Cache<K, V> {
     return entry.value;
   }
 
+  @override
+  List<V?> getAll(Iterable<K> keys) => keys.map((e) => get(e)).toList();
+
   /// Invalidates the cache entry associated with [key].
   ///
   /// When a [key] is invalidated, it means that the associated cache entry will be scheduled
@@ -146,6 +149,13 @@ class LocalCache<K, V> implements Cache<K, V> {
 
     _availableWeight -= entry.weight;
     _map[key] = entry;
+  }
+
+  @override
+  void putAll(Map<K, V> map) {
+    for (var element in map.entries) {
+      put(element.key, element.value);
+    }
   }
 
   _LocalCacheEntry<V> _createEntry(K key, V value) {
