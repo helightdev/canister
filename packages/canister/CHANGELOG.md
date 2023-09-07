@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **REFACTOR**: reformat files and remove unused imports.
+
 ## 1.1.0
 
  - **REFACTOR**: rework/optimize and document eviction strategy and cleanup.
