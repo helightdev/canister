@@ -18,6 +18,10 @@ import 'dart:async';
 
 import 'package:canister/src/cache.dart';
 
+/// This class represents a loading cache that implements the [AsyncCache] interface.
+///
+/// It provides a mechanism to asynchronously load and cache values for a given key.
+/// The cache is backed by a [Cache] instance, and loading is handled by a [CacheLoader].
 class LoadingCache<K, V> implements AsyncCache<K, V> {
   final Cache<K, V> cache;
   final CacheLoader<K, V> loader;
