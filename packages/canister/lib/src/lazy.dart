@@ -75,6 +75,13 @@ extension LazyExtension<V> on SyncLazy<V> {
   V call() => value;
 }
 
+/// Convenience extensions
+extension AsyncLazyExtension<V> on Lazy<V> {
+  /// A convenience method for eagerly evaluating the lazy value with a nicer syntax.
+  Lazy<V> eager() => this..call();
+}
+
+/// Convenience extensions
 extension LazyFunctionExtension<T> on Future<T> Function() {
   /// Creates a [MemoizedLazy] instance wrapping the given function,
   /// allowing for memoization of the result.
