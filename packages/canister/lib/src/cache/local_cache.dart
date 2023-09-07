@@ -19,6 +19,11 @@ import 'dart:collection';
 import 'package:canister/canister.dart';
 import 'package:canister/src/internal.dart';
 
+/// This class represents a local cache implementation that implements the [Cache] interface.
+///
+/// It provides a simple in-memory cache with expiration and capacity management.
+/// The cache allows for customization using a [weightFunction] to assign weights to cache entries
+/// and a [removalListener] to handle removal events.
 class LocalCache<K, V> implements Cache<K, V> {
   final int? expireAfterWrite;
   final int? expireAfterRead;
