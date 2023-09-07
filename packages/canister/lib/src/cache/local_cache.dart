@@ -94,7 +94,6 @@ class LocalCache<K, V> implements Cache<K, V> {
       if (popped == null) continue;
       _availableWeight += popped.weight;
       removalListener?.call(element, popped.value);
-      print("Removed $element");
     }
   }
 
