@@ -1,4 +1,8 @@
 # Canister - A Versatile Dart Caching Library
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/helightdev/canister/dart.yaml)
+![Pub Version (including pre-releases)](https://img.shields.io/pub/v/canister?color=brightgreen)
+![Pub Points](https://img.shields.io/pub/points/canister)
+![Pub Likes](https://img.shields.io/pub/likes/canister?color=brightgreen)
 
 Canister is a powerful and extensible caching library for Dart, offering a wide range of caching
 strategies and features to enhance the performance of your Dart applications.
