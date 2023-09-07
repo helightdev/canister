@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  smoke:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -16,5 +16,5 @@ jobs:
           channel: 'stable'
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
-      - name: "Run Smoke Tests"
+      - name: "Run Unit Tests"
         run: melos run test
