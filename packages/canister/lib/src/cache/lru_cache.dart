@@ -24,13 +24,12 @@ import 'package:canister/canister.dart';
 /// used items are removed when the cache exceeds a specified capacity. It
 /// provides efficient methods for storing and retrieving key-value pairs, as
 /// well as clearing the cache and invalidating specific keys.
-class LruCache<K,V> implements Cache<K,V> {
-
+class LruCache<K, V> implements Cache<K, V> {
   int capacity;
-  
+
   LruCache(this.capacity);
 
-  final LinkedHashMap<K,V> _map = LinkedHashMap();
+  final LinkedHashMap<K, V> _map = LinkedHashMap();
 
   int get _freeSlots => capacity - _map.length;
 
@@ -70,7 +69,8 @@ class LruCache<K,V> implements Cache<K,V> {
   }
 
   void _free(int amount) {
-    _map.entries.take(amount)
+    _map.entries
+        .take(amount)
         .toList() // Buffer
         .forEach((entry) {
       _map.remove(entry.key);
@@ -82,5 +82,4 @@ class LruCache<K,V> implements Cache<K,V> {
 
   @override
   int get size => _map.length;
-
 }

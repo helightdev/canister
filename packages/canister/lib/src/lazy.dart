@@ -42,7 +42,6 @@ abstract interface class SyncLazy<V> {
   }
 }
 
-
 /// A specified interface for asynchronously lazy-loading a value of type [V].
 abstract interface class Lazy<V> extends SyncLazy<Future<V>> {
   /// Gets the lazily computed value. If the value has not been computed yet,

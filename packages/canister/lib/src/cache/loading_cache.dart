@@ -41,7 +41,7 @@ class LoadingCache<K, V> implements AsyncCache<K, V> {
   @override
   Future<List<V?>> getAll(Iterable<K> keys) {
     return Future.wait(keys.map((key) => get(key)));
-  } 
+  }
 
   Future<V> _startLoad(K key) {
     Completer<V> completer = Completer();

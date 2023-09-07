@@ -15,7 +15,6 @@
  */
 
 import 'package:canister/canister.dart';
-import 'package:canister/src/cache/loading_cache.dart';
 import 'package:canister/src/internal.dart';
 
 /// A builder class for configuring and creating cache instances.

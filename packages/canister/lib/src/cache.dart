@@ -53,7 +53,7 @@ abstract interface class Cache<K, V> {
   /// Puts multiple new key-value pairs into the cache. If a [K] already exists in
   /// the cache, the previous value associated with it is replaced by the
   /// [V].
-  void putAll(Map<K,V> map);
+  void putAll(Map<K, V> map);
 
   /// Invalidates (removes) a key-value pair from the cache based on the
   /// provided [key]. If the [key] is not found in the cache, no action is taken.
@@ -63,10 +63,10 @@ abstract interface class Cache<K, V> {
   void clear();
 
   /// Creates a builder class for configuring and creating cache instances.
-  static CacheBuilder<K,V> builder<K,V>() => CacheBuilder<K,V>();
+  static CacheBuilder<K, V> builder<K, V>() => CacheBuilder<K, V>();
 
   /// Creates a [LruCache] with the specified [capacity].
-  static LruCache<K,V> lru<K,V>(int capacity) => LruCache<K,V>(capacity);
+  static LruCache<K, V> lru<K, V>(int capacity) => LruCache<K, V>(capacity);
 }
 
 /// An interface for an asynchronous cache that stores key-value pairs.
@@ -95,7 +95,7 @@ abstract interface class AsyncCache<K, V> {
   /// Puts multiple new key-value pairs into the cache. If a [K] already exists in
   /// the cache, the previous value associated with it is replaced by the
   /// [V].
-  Future putAll(Map<K,V> map);
+  Future putAll(Map<K, V> map);
 
   /// Invalidates (removes) a key-value pair from the cache based on the
   /// provided [key]. If the [key] is not found in the cache, no action is taken.

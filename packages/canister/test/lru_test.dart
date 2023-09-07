@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-import 'dart:collection';
-
 import 'package:canister/canister.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 void main() {
   test("Basic", () {
-    LruCache<String,int> cache = LruCache(3);
+    LruCache<String, int> cache = LruCache(3);
     cache.put("A", 1);
     cache.put("B", 2);
     cache.put("C", 3);
@@ -33,10 +31,7 @@ void main() {
     expect(cache.get("B"), 2);
     expect(cache.get("C"), 3);
     expect(cache.get("D"), 4);
-    cache.putAll({
-      "_": 1,
-      "__": 2
-    });
+    cache.putAll({"_": 1, "__": 2});
     expect(cache.get("B"), null);
     expect(cache.get("C"), null);
     expect(cache.get("D"), 4);

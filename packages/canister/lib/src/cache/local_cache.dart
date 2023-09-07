@@ -169,7 +169,7 @@ class LocalCache<K, V> implements Cache<K, V> {
     _deletionQueue.add(key);
     _danglingWeight += weight;
   }
-  
+
   void _performDeletions() {
     while (_deletionQueue.isNotEmpty) {
       var element = _deletionQueue.removeFirst();
