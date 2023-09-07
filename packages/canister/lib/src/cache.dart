@@ -45,6 +45,9 @@ abstract interface class Cache<K, V> {
   /// Invalidates (removes) a key-value pair from the cache based on the
   /// provided [key]. If the [key] is not found in the cache, no action is taken.
   void invalidate(K key);
+
+  /// Fully empties the queue.
+  void clear();
 }
 
 /// An interface for an asynchronous cache that stores key-value pairs.
@@ -69,6 +72,9 @@ abstract interface class AsyncCache<K, V> {
   /// Invalidates (removes) a key-value pair from the cache based on the
   /// provided [key]. If the [key] is not found in the cache, no action is taken.
   Future invalidate(K key);
+
+  /// Fully empties the queue.
+  Future clear();
 }
 
 extension CacheExtension<K, V> on Cache<K, V> {

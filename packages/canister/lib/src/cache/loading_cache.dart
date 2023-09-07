@@ -66,4 +66,7 @@ class LoadingCache<K, V> implements AsyncCache<K, V> {
 
   @override
   Future<Map<K, V>> map() => Future.value(cache.map);
+
+  @override
+  Future clear() async => cache.clear();
 }

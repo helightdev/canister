@@ -249,6 +249,14 @@ class LocalCache<K, V> implements Cache<K, V> {
   Map<K, V> get map => Map.fromEntries(_map.entries
       .where((element) => !_deletionQueue.contains(element.key))
       .map((entry) => MapEntry(entry.key, entry.value.value)));
+
+  @override
+  void clear() {
+    _map.clear();
+    _deletionQueue.clear();
+    _danglingWeight = 0;
+    _availableWeight = _maxWeight;
+  }
 }
 
 class _LocalCacheEntry<V> {
