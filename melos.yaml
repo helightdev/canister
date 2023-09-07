@@ -1,0 +1,18 @@
+name: canister_project
+repository: https://github.com/helightdev/canister
+packages:
+  - packages/*
+scripts:
+  copy-readme:
+    name: copy-readme
+    description: 'Copies the root-Readme to the canister package'
+    run: cp README.md packages/canister/README.md
+
+  test:
+    description: Run tests in a specific package.
+    run: dart test
+    exec:
+      concurrency: 1
+    packageFilters:
+      dirExists:
+        - test
