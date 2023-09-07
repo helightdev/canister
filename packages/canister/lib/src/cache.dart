@@ -61,6 +61,12 @@ abstract interface class Cache<K, V> {
 
   /// Fully empties the queue.
   void clear();
+
+  /// Creates a builder class for configuring and creating cache instances.
+  static CacheBuilder<K,V> builder<K,V>() => CacheBuilder<K,V>();
+
+  /// Creates a [LruCache] with the specified [capacity].
+  static LruCache<K,V> lru<K,V>(int capacity) => LruCache<K,V>(capacity);
 }
 
 /// An interface for an asynchronous cache that stores key-value pairs.
