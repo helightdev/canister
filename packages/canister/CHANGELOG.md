@@ -1,10 +1,7 @@
 ## 1.1.0
 
- - **REFACTOR**: reformat files and remove unused imports.
-
-## 1.1.0
-
  - **REFACTOR**: rework/optimize and document eviction strategy and cleanup.
+ - **REFACTOR**: reformat files and remove unused imports.
  - **FEAT**: add more lightweight lru cache and static convenience methods in the cache class.
  - **FEAT**: add additional methods for bulk data.
  - **FEAT**: add clear method.
