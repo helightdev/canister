@@ -42,6 +42,8 @@ abstract interface class SyncLazy<V> {
   }
 }
 
+
+/// A specified interface for asynchronously lazy-loading a value of type [V].
 abstract interface class Lazy<V> extends SyncLazy<Future<V>> {
   /// Gets the lazily computed value. If the value has not been computed yet,
   /// it will be computed and cached before being returned.
@@ -65,6 +67,7 @@ abstract interface class Lazy<V> extends SyncLazy<Future<V>> {
   }
 }
 
+/// Convenience extensions
 extension LazyExtension<V> on SyncLazy<V> {
   /// A convenience method that allows calling the [value] getter as if it were
   /// a function. This is useful when you want to obtain the value using a
