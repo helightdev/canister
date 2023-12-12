@@ -131,6 +131,12 @@ class LocalCache<K, V> implements Cache<K, V> {
   /// 4. It subtracts the weight of the new entry from the available weight and inserts the entry into the cache.
   @override
   void put(K key, V value) {
+    // Free up the previous entry's weight
+    var previousEntry = _map[key];
+    if (previousEntry != null) {
+      _availableWeight += previousEntry.weight;
+    }
+
     var entry = _createEntry(key, value);
     if (_availableWeight < entry.weight) {
       var requiredWeight = entry.weight - _availableWeight;
@@ -147,11 +153,6 @@ class LocalCache<K, V> implements Cache<K, V> {
       cleanup();
     }
 
-    // Free up the previous entry's weight
-    var previousEntry = _map[key];
-    if (previousEntry != null) {
-      _availableWeight += previousEntry.weight;
-    }
 
     _availableWeight -= entry.weight;
     _map[key] = entry;
