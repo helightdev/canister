@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **FIX**: move freeing of previous entry to top to not interfere with cleanup logic.
+
 ## 1.2.1
 
  - **REFACTOR**: don't return implementation type.

@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`canister` - `v1.2.2`](#canister---v122)
+
+---
+
+#### `canister` - `v1.2.2`
+
+ - **FIX**: move freeing of previous entry to top to not interfere with cleanup logic.
+
+
+## 2023-12-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`canister` - `v1.2.1`](#canister---v121)
 
 ---
