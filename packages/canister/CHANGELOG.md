@@ -1,3 +1,8 @@
+## 1.2.0
+
+ - **FIX**: bug where cache weight for replacements didn't get cleaned.
+ - **FEAT**: SyncLoadingCache, ValueHolders, dsl cleanup.
+
 ## 1.1.1
 
  - **REFACTOR**: reformat files and remove unused imports.
