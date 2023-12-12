@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - **REFACTOR**: don't return implementation type.
+
 ## 1.2.0
 
  - **FIX**: bug where cache weight for replacements didn't get cleaned.

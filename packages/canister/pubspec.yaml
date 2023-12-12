@@ -1,6 +1,6 @@
 name: canister
 description: A versatile and extensible caching library written in pure Dart, offering Guava-like caching capabilities.
-version: 1.2.0
+version: 1.2.1
 repository: https://github.com/helightdev/canister
 topics:
   - cache
