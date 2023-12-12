@@ -14,19 +14,36 @@
  * limitations under the License.
  */
 
-/// Extensible caching library written in pure dart offering a guava like caches.
-library canister;
+import 'package:canister/canister.dart';
 
-import 'dart:async';
+class ValueHolderImpl<T> implements ValueHolder<T> {
+  late T _value;
+  @override
+  bool hasValue = false;
 
-export 'src/cache.dart';
-export 'src/lazy.dart';
-export 'src/dsl.dart';
-export 'src/value_holder.dart';
+  @override
+  T get value {
+    if (!hasValue) throw StateError("Value not set");
+    return _value;
+  }
 
-typedef SyncLazyFunc<V> = V Function();
-typedef SyncCacheLoader<K, V> = V Function(K key);
-typedef AsyncLazyFunc<V> = FutureOr<V> Function();
-typedef CacheLoader<K, V> = FutureOr<V> Function(K key);
-typedef WeightFunction<K, V> = int Function(K key, V value);
-typedef RemovalListener<K, V> = Function(K key, V value);
+  @override
+  T hold(T value) {
+    hasValue = true;
+    return _value = value;
+  }
+
+  @override
+  T get(SyncLazyFunc<T> loader) {
+    if (!hasValue) {
+      _value = loader();
+      hasValue = true;
+    }
+    return _value!;
+  }
+
+  @override
+  void reset() {
+    hasValue = false;
+  }
+}

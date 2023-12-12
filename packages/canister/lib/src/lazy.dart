@@ -22,9 +22,6 @@ export 'lazy/sync_memoized.dart';
 export 'lazy/async_memoized.dart';
 export 'lazy/expire_memoized.dart';
 
-typedef SyncLazyFunc<V> = V Function();
-typedef AsyncLazyFunc<V> = FutureOr<V> Function();
-
 /// An interface for lazy-loading a value of type [V].
 abstract interface class SyncLazy<V> {
   /// Gets the lazily computed value. If the value has not been computed yet,
@@ -64,30 +61,4 @@ abstract interface class Lazy<V> extends SyncLazy<Future<V>> {
       [Duration? duration]) {
     return ExpiringLazy(loader, duration);
   }
-}
-
-/// Convenience extensions
-extension LazyExtension<V> on SyncLazy<V> {
-  /// A convenience method that allows calling the [value] getter as if it were
-  /// a function. This is useful when you want to obtain the value using a
-  /// function call syntax.
-  V call() => value;
-}
-
-/// Convenience extensions
-extension AsyncLazyExtension<V> on Lazy<V> {
-  /// A convenience method for eagerly evaluating the lazy value with a nicer syntax.
-  Lazy<V> eager() => this..call();
-}
-
-/// Convenience extensions
-extension LazyFunctionExtension<T> on Future<T> Function() {
-  /// Creates a [MemoizedLazy] instance wrapping the given function,
-  /// allowing for memoization of the result.
-  MemoizedLazy<T> lazy() => MemoizedLazy(this);
-
-  /// Creates an [ExpiringLazy] instance wrapping the given function,
-  /// allowing for expiring memoization of the result.
-  ExpiringLazy<T> lazyExpiring([Duration? duration]) =>
-      ExpiringLazy(this, duration);
 }

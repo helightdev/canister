@@ -23,10 +23,6 @@ export 'cache/loading_cache.dart';
 export 'cache/local_cache.dart';
 export 'cache/lru_cache.dart';
 
-typedef WeightFunction<K, V> = int Function(K key, V value);
-typedef RemovalListener<K, V> = Function(K key, V value);
-typedef CacheLoader<K, V> = FutureOr<V> Function(K key);
-
 /// An interface for a generic cache that stores key-value pairs.
 abstract interface class Cache<K, V> {
   /// Gets the current size of the cache, indicating the number of key-value pairs
@@ -103,9 +99,4 @@ abstract interface class AsyncCache<K, V> {
 
   /// Fully empties the queue.
   Future clear();
-}
-
-extension CacheExtension<K, V> on Cache<K, V> {
-  V? operator [](K key) => get(key);
-  void operator []=(K key, V value) => put(key, value);
 }

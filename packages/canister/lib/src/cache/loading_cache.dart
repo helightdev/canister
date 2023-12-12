@@ -16,7 +16,7 @@
 
 import 'dart:async';
 
-import 'package:canister/src/cache.dart';
+import 'package:canister/canister.dart';
 
 /// This class represents a loading cache that implements the [AsyncCache] interface.
 ///
@@ -77,4 +77,41 @@ class LoadingCache<K, V> implements AsyncCache<K, V> {
 
   @override
   Future clear() async => cache.clear();
+}
+
+class SyncLoadingCache<K, V> implements Cache<K, V> {
+  final Cache<K, V> delegate;
+  final SyncCacheLoader<K, V> loader;
+
+  SyncLoadingCache(this.delegate, this.loader);
+
+  @override
+  void clear() => delegate.clear();
+
+  @override
+  V? get(K key) {
+    var currentlyPresent = delegate.get(key);
+    if (currentlyPresent != null) return currentlyPresent;
+    var loaded = loader(key);
+    delegate.put(key, loaded);
+    return loaded;
+  }
+
+  @override
+  List<V?> getAll(Iterable<K> keys) => keys.map(get).toList();
+
+  @override
+  void invalidate(K key) => delegate.invalidate(key);
+
+  @override
+  Map<K, V> get map => delegate.map;
+
+  @override
+  void put(K key, V value) => delegate.put(key, value);
+
+  @override
+  void putAll(Map<K, V> map) => delegate.putAll(map);
+
+  @override
+  int get size => delegate.size;
 }

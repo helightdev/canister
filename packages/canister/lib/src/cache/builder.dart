@@ -81,4 +81,10 @@ class CacheBuilder<K, V> {
     var cache = build();
     return LoadingCache(cache, loader);
   }
+
+  /// Builds and returns a synchronous loading cache based on the builder's parameters.
+  Cache<K, V> buildSyncLoading(SyncCacheLoader<K, V> loader) {
+    var cache = build();
+    return SyncLoadingCache(cache, loader);
+  }
 }
