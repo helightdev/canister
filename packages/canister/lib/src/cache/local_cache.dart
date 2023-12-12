@@ -147,6 +147,12 @@ class LocalCache<K, V> implements Cache<K, V> {
       cleanup();
     }
 
+    // Free up the previous entry's weight
+    var previousEntry = _map[key];
+    if (previousEntry != null) {
+      _availableWeight += previousEntry.weight;
+    }
+
     _availableWeight -= entry.weight;
     _map[key] = entry;
   }

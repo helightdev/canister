@@ -17,6 +17,12 @@ void main() {
     cache.invalidate("c");
     expect(cache.get("c"), null); // c should now be no longer reachable
     expect(cache.size, 2); // the cache should not be cleared
+    cache.put("a", 1);
+    cache.put("a", 1);
+    cache.put("a", 1);
+    cache.put("a", 1);
+    cache.put("a", 1);
+    expect(cache.size, 2); // the cache should stay the same size
   });
 
   test("Expiration Test", () async {
@@ -39,6 +45,18 @@ void main() {
     expect(cache.get("c"), null); // c should not exist
     await Future.delayed(Duration(milliseconds: 50));
     expect(cache.get("a"), null); // a should have expired
+  });
+
+  test("Update Test", () {
+    var cache = CacheBuilder<int, String>()
+        .capacity(10)
+        .weightFunction((key, value) => value.length)
+        .build();
+    expect(cache.size, 0);
+    cache.put(1, "aaa");
+    expect(cache.size, 3);
+    cache.put(1, "aaaaaa");
+    expect(cache.size, 6);
   });
 
   test("Weight Test", () {
