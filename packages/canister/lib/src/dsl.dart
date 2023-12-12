@@ -112,18 +112,18 @@ extension AsyncLazyExtension<V> on Lazy<V> {
 extension LazyCreationExtension<T> on T Function() {
   /// Creates a [SyncMemoizedLazy] instance wrapping the given function,
   /// allowing for memoization of the result.
-  SyncMemoizedLazy<T> lazy() => SyncMemoizedLazy(this);
+  SyncLazy<T> lazy() => SyncMemoizedLazy(this);
 }
 
 /// Convenience extensions
 extension LazyFunctionExtension<T> on Future<T> Function() {
   /// Creates a [MemoizedLazy] instance wrapping the given function,
   /// allowing for memoization of the result.
-  MemoizedLazy<T> lazy() => MemoizedLazy(this);
+  Lazy<T> lazy() => MemoizedLazy(this);
 
   /// Creates an [ExpiringLazy] instance wrapping the given function,
   /// allowing for expiring memoization of the result.
-  ExpiringLazy<T> lazyExpiring([Duration? duration]) =>
+  Lazy<T> lazyExpiring([Duration? duration]) =>
       ExpiringLazy(this, duration);
 }
 
